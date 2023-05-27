@@ -1,0 +1,18 @@
+.shop, .basket{
+    float: left;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.shop{
+    
+    background: yellow;
+    width: 57%;
+    margin-right: 3%;
+}
+.basket{
+    background:turquoise;
+    width: 37%;
+    margin-left: 3%;
+    margin-right: 0%;
+}
