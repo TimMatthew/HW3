@@ -1,8 +1,4 @@
-.shop, .basket{
-    float: left;
-    box-sizing: border-box;
-    padding: 15px;
-}
+
 
 .shop{
     border-style: solid;
@@ -20,6 +16,7 @@
     float:left;
     box-sizing: border-box;
     padding: 5px;
+    color: white;
 }
 
 #search_bar{
