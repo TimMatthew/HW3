@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="shop.css"/>
     <link rel="stylesheet" type="text/css" href="basket.css"/>
     <link rel="stylesheet" type="text/css" href="general.css">
-    <title>Document</title>
+    <title>Shop page</title>
 </head>
 <body>
     
@@ -15,19 +15,19 @@
 
             <div class="input_div">
                 <input type="text" placeholder="Назва товару" id="search_bar">
-                <button id="add_button" data-tooltip="Tooltip for add button">Додати</button>
+                <button id="add_button" data-tooltip="Додати товар">Додати</button>
             </div>
              
             <div class="goods">
                 <section class="goods-panel">
-                    <span class="left">Помідори</span>
+                    <span class="left" id="tomatoes">Помідори</span>
 
                     <div class="center">
-                        <span class="counter">1</span>
+                        <span class="counter">2</span>
                     </div>
 
                     <div class="right">
-                        <button class="bought" data-tooltip="Tooltip for add button">Не куплено</button>
+                        <button class="bought" data-tooltip="Товар занесено в категорію 'Куплено'">Не куплено</button>
                     </div>
                 </section>
 
@@ -35,14 +35,14 @@
                     <span class="left">Печиво</span>
 
                     <div class="center">
-                        <button class="minus" data-tooltip="Tooltip for add button">-</button>
+                        <button class="minus" data-tooltip="Зменшити к-сть продуктів">-</button>
                         <span class="counter">2</span>
-                        <button class="plus" data-tooltip="Tooltip for add button">+</button>
+                        <button class="plus" data-tooltip="Збільшити к-сть продуктів">+</button>
                     </div>
 
                     <div class="right">
-                        <button class="bought" data-tooltip="Tooltip for add button">Куплено</button>
-                        <button  class="cancel" data-tooltip="Tooltip for add button">Х</button>
+                        <button class="bought" data-tooltip="Товар занесено в категорію 'Залишилося'">Куплено</button>
+                        <button  class="cancel" data-tooltip="Скасувати дії">Х</button>
                     </div>
                 </section>
 
@@ -50,14 +50,14 @@
                     <input type="text" class="left" placeholder="Сир">
                     
                     <div class="center">
-                        <button class="minus" id="cheese-minus-button" data-tooltip="Tooltip for add button">-</button>
+                        <button class="minus" id="cheese-minus-button" data-tooltip="Зменшити к-сть продуктів">-</button>
                         <span class="counter">1</span>
-                        <button class="plus" data-tooltip="Tooltip for add button">+</button>
+                        <button class="plus" data-tooltip="Збільшити к-сть продуктів">+</button>
                     </div>
 
                     <div class="right">
-                        <button class="bought" data-tooltip="Tooltip for add button">Куплено</button>
-                        <button class="cancel" data-tooltip="Tooltip for add button">Х</button>
+                        <button class="bought" data-tooltip="Товар занесено в категорію 'Залишилося'">Куплено</button>
+                        <button class="cancel" data-tooltip="Скасувати дії">Х</button>
                     </div>
                 </section>
             </div>
@@ -86,7 +86,7 @@
             <section class="taken">
                 <span class="index-text">
                     Помідори
-                    <span class="index-num">1</span>
+                    <span class="index-num">2</span>
                 </span>
             </section>
         </div>

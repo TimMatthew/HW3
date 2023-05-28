@@ -15,19 +15,29 @@
     font-weight: bold;
 }
 
+.rest{
+    display:flex;
+    align-items:center;
+}
+
 .index-text{
     position: relative;
     margin-right: 5px;
     text-align: left;
     background-color: lightgray;
-    padding: 8px;
-    border-radius: 5px;
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.index-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
 }
 
 .index-num{
-    text-align: left;
     background-color: orange;
     color: white;
-    padding: 5px;
+    padding: 3px;
     border-radius: 11px;
 }

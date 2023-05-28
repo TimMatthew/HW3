@@ -68,6 +68,10 @@
     border-radius: 14px;
 }
 
+#tomatoes{
+    text-decoration:line-through;
+}
+
 .left {
     text-align: left;
 }
