@@ -1,5 +1,33 @@
 .basket{
-    background:turquoise;
+    border: solid black 2px;
+    border-radius: 10px;
     width: 37%;
     margin-left: 3%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#rest-title, #taken-title, .rest, .taken{
+    border-top: solid lightgray 1px;
+    padding: 10px;
+}
+
+#rest-title, #taken-title{
+    font-weight: bold;
+}
+
+.index-text{
+    position: relative;
+    margin-right: 5px;
+    text-align: left;
+    background-color: lightgray;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.index-num{
+    text-align: left;
+    background-color: orange;
+    color: white;
+    padding: 5px;
+    border-radius: 11px;
 }
