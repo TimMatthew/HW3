@@ -1,0 +1,20 @@
+#badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 150px;
+    height: 50px;
+    border-radius: 15px;
+    background-color: darkorchid;
+    counter-reset: white;
+}
+#badge-title{
+    flex-wrap: nowrap;
+    color: white;
+    word-spacing: 3px;
+    letter-spacing: 1px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
