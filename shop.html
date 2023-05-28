@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="shop.css"/>
+    <link rel="stylesheet" type="text/css" href="basket.css"/>
     <title>Document</title>
 </head>
 <body>
@@ -19,36 +20,53 @@
             <div class="goods">
                 <section class="goods-panel">
                     <span class="left">Помідори</span>
+
                     <div class="center">
                         <span class="counter">1</span>
                     </div>
-                    <button>Не куплено</button>
+
+                    <div class="right">
+                        <button class="bought">Не куплено</button>
+                    </div>
                 </section>
 
                 <section class="goods-panel">
                     <span class="left">Печиво</span>
+
                     <div class="center">
                         <button class="minus">-</button>
                         <span class="counter">2</span>
                         <button class="plus">+</button>
                     </div>
-                    <button>Куплено</button>
+
+                    <div class="right">
+                        <button class="bought">Куплено</button>
+                        <button  class="cancel">Х</button>
+                    </div>
                 </section>
 
                 <section class="goods-panel">
-                    <input type="text" class="left" placeholder="Cheese" name="" id="">
+                    <input type="text" class="left" placeholder="Сир">
+                    
                     <div class="center">
                         <button class="minus" id="cheese-minus-button">-</button>
                         <span class="counter">1</span>
                         <button class="plus">+</button>
                     </div>
-                    <button>Куплено</button>
+
+                    <div class="right">
+                        <button class="bought">Куплено</button>
+                        <button class="cancel">Х</button>
+                    </div>
                 </section>
             </div>
         </div>
         
         <div class="basket">
-            dfg
+            <section id="rest">
+                Залишилося
+            </section>
+            
         </div>
 
 </body>
