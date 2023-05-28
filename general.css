@@ -1,0 +1,25 @@
+button {
+    position: relative;
+}
+
+button::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    white-space: nowrap;  /* to prevent the text from breaking lines */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;  /* the tooltip should not interfere with clicks on the button */
+}
+
+button:hover::after {
+    visibility: visible;
+    opacity: 1;
+}
