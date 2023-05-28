@@ -12,6 +12,9 @@
     margin-right: 3%;
 }
 
+.goods{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 .basket{
     background:turquoise;
     width: 37%;
@@ -40,6 +43,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 7px;
 }
 
 .left, .center, .right {
@@ -68,4 +72,39 @@
 
 .right {
     text-align: right;
+}
+
+.counter{
+    background-color: lightgrey;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.goods-panel{
+    border-top: solid lightgray 2px;
+    position: relative;  /* New property to set a reference for the absolute positioning of the input field */
+}
+
+#cheese-minus-button{
+    background-color:palevioletred;
+    border-color: palevioletred;
+}
+
+/* To place input field properly */
+.goods-panel {
+    position: absolute;  /* Position the input field absolutely within the relative container */
+    top: 50%;            /* Center vertically */
+    transform: translateY(-50%); /* Counteract the height of the input field */
+    left: 0;            /* Align to the left */
+}
+
+.left-side, .right-side {
+    flex: 1; /* Make them take equal space on either side of the center */
+}
+
+.left-input {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px; /* Adjust this based on your layout */
 }
