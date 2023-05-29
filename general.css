@@ -1,5 +1,5 @@
 @media screen and (max-width: 500px) {
-    .shop, .basket {
+    #shop, #basket {
         float: none;
         width: 100%;
         margin: 0px;
@@ -7,10 +7,12 @@
     }
 }
 
-.shop, .basket{
+#shop, #basket{
+    print-color-adjust:unset;
     float: left;
     box-sizing: border-box;
     padding: 15px;
+    -webkit-print-color-adjust: exact;
 }
 
 button {
@@ -26,11 +28,11 @@ button::after {
     color: white;
     padding: 5px;
     border-radius: 5px;
-    white-space: nowrap;  /* to prevent the text from breaking lines */
+    white-space: nowrap;
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    pointer-events: none;  /* the tooltip should not interfere with clicks on the button */
+    pointer-events: none;
 }
 
 button:hover::after {

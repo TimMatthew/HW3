@@ -1,6 +1,6 @@
 
 
-.shop{
+#shop{
     border-style: solid;
     border-color: black;
     border-radius: 10px;
@@ -24,6 +24,7 @@
 }
 
 #add_button{
+    print-color-adjust: exact;
     width: 25%;
     border-radius: 5px;
     border-color: cornflowerblue;
