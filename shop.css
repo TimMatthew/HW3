@@ -48,10 +48,6 @@
     text-align: center;
 }
 
-/* .counter, .plus, .minus{
-    box-sizing: border-box;
-} */
-
 .plus{
     background-color: green;
     border-color: green;
@@ -86,10 +82,6 @@
 
 .goods-panel{
     border-top: solid lightgray 2px;
-}
-#cheese-minus-button{
-    background-color:palevioletred;
-    border-color: palevioletred;
 }
 
 .bought{
