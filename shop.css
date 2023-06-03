@@ -1,5 +1,3 @@
-
-
 #shop{
     border-style: solid;
     border-color: black;
@@ -60,10 +58,6 @@
     border-color: red;
     color: white;
     border-radius: 14px;
-}
-
-#tomatoes{
-    text-decoration:line-through;
 }
 
 .left {
