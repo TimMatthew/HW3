@@ -1,4 +1,5 @@
 window.addEventListener('load', addGood);
+// Optimize below
 window.addEventListener(`load`, function(){
     var goodsPanels = document.querySelectorAll('.goods-panel');
     goodsPanels.forEach(function(goodsPanel) {
@@ -8,6 +9,7 @@ window.addEventListener(`load`, function(){
         });
     });
 });
+//Optimize below
 window.addEventListener('load', function() {
     var goodsPanels = document.querySelectorAll('.goods-panel');
 
@@ -18,6 +20,7 @@ window.addEventListener('load', function() {
         });
     });
 });
+window.addEventListener('load', editQuantity());
 
 function addGood() {
     var addButton = document.getElementById('add_button');
@@ -33,7 +36,6 @@ function addGood() {
             var leftSpan = newGoodsPanel.querySelector('.left');
             leftSpan.textContent = productName;
 
-            // takes 2 times to clicke for toggling
             var boughtButton = newGoodsPanel.querySelector('.bought');
                 boughtButton.addEventListener('click', function() {
                 togglePurchase(newGoodsPanel);
@@ -74,6 +76,39 @@ function togglePurchase(goodsPanel) {
     }
 }
 
+function editQuantity(){
+
+    var goodsContainer = document.querySelector('.goods');
+
+    goodsContainer.addEventListener('click', function(e) {
+        if (e.target && e.target.matches('.plus')) {
+            var goodsPanel = e.target.closest('.goods-panel');
+            var counterSpan = goodsPanel.querySelector('.counter');
+            var count = parseInt(counterSpan.textContent, 10);
+            counterSpan.textContent = count + 1;
+    
+            var minusButton = goodsPanel.querySelector('.minus');
+            if (count + 1 > 1) {
+                minusButton.style.display = `inline-block`;
+            }
+        }
+            
+        if (e.target && e.target.matches('.minus')) {
+            var goodsPanel = e.target.closest('.goods-panel');
+            var counterSpan = goodsPanel.querySelector('.counter');
+            var count = parseInt(counterSpan.textContent, 10);
+            if (count - 1 >= 1) {
+                counterSpan.textContent = count - 1;
+            }
+    
+            var minusButton = goodsPanel.querySelector('.minus');
+            if (count - 1 == 1) {
+                minusButton.style.display = `none`;
+            }
+        }
+    });    
+}
+
 function createGoodsPanel() {
     var goodsPanel = document.createElement('section');
     goodsPanel.classList.add('goods-panel');
@@ -95,6 +130,7 @@ function createGoodsPanel() {
     var counterSpan = document.createElement('span');
     counterSpan.classList.add('counter');
     counterSpan.textContent = '1';
+    counterSpan.style.margin = '4px';
     centerDiv.appendChild(counterSpan);
 
     var plusButton = document.createElement('button');
@@ -127,6 +163,5 @@ function createGoodsPanel() {
     rightDiv.appendChild(cancelButton);
 
     goodsPanel.appendChild(rightDiv);
-
     return goodsPanel;
 }
