@@ -1,11 +1,20 @@
 window.addEventListener('load', addGood);
-
 window.addEventListener(`load`, function(){
     var goodsPanels = document.querySelectorAll('.goods-panel');
     goodsPanels.forEach(function(goodsPanel) {
         var removeButton = goodsPanel.querySelector('.cancel');
         removeButton.addEventListener('click', function() {
             goodsPanel.remove();
+        });
+    });
+});
+window.addEventListener('load', function() {
+    var goodsPanels = document.querySelectorAll('.goods-panel');
+
+    goodsPanels.forEach(function(goodsPanel) {
+        var boughtButton = goodsPanel.querySelector('.bought');
+        boughtButton.addEventListener('click', function() {
+            togglePurchase(goodsPanel);
         });
     });
 });
@@ -26,19 +35,13 @@ function addGood() {
 
             // takes 2 times to clicke for toggling
             var boughtButton = newGoodsPanel.querySelector('.bought');
-            boughtButton.addEventListener('click', function() {
-                var goodsPanels = document.querySelectorAll('.goods-panel');
-                goodsPanels.forEach(function(goodsPanel) {
-                var boughtButton = goodsPanel.querySelector('.bought');
-                 boughtButton.addEventListener('click', function() {
-                togglePurchase(goodsPanel);
-        });
-    });
+                boughtButton.addEventListener('click', function() {
+                togglePurchase(newGoodsPanel);
             });
 
             var removeButton = newGoodsPanel.querySelector('.cancel');
-            removeButton.addEventListener('click', function() {
-            removeGood(newGoodsPanel);
+                removeButton.addEventListener('click', function() {
+                newGoodsPanel.remove();
             });
 
             goodsContainer.appendChild(newGoodsPanel);
@@ -49,6 +52,24 @@ function addGood() {
     });
 }
 
+function togglePurchase(goodsPanel) {
+    var centerDiv = goodsPanel.querySelector('.center');
+    var cancelButton = goodsPanel.querySelector('.cancel');
+    var leftSpan = goodsPanel.querySelector('.left');
+    var boughtButton = goodsPanel.querySelector('.bought');
+
+    if (boughtButton.textContent === 'Купити товар') {
+        centerDiv.style.display = 'none';
+        cancelButton.style.display = 'none';
+        leftSpan.style.textDecoration = 'line-through';
+        boughtButton.textContent = 'Скасувати покупку';
+    } else {
+        centerDiv.style.display = 'flex';
+        cancelButton.style.display = 'inline-block';
+        leftSpan.style.textDecoration = 'none';
+        boughtButton.textContent = 'Купити товар';
+    }
+}
 function createGoodsPanel() {
     var goodsPanel = document.createElement('section');
     goodsPanel.classList.add('goods-panel');
@@ -93,18 +114,12 @@ function createGoodsPanel() {
     boughtButton.classList.add('bought');
     boughtButton.textContent = 'Купити товар';
     boughtButton.setAttribute('data-tooltip', "Товар занесено в категорію 'Залишилося'");
-    boughtButton.addEventListener('click', function() {
-        togglePurchase(goodsPanel);
-    });
     rightDiv.appendChild(boughtButton);
 
     var cancelButton = document.createElement('button');
     cancelButton.classList.add('cancel');
     cancelButton.textContent = 'Х';
     cancelButton.setAttribute('data-tooltip', "Скасувати дії");
-    cancelButton.addEventListener('click', function() {
-        goodsPanel.remove();
-    });
     rightDiv.appendChild(cancelButton);
 
     goodsPanel.appendChild(rightDiv);
