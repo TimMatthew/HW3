@@ -9,6 +9,7 @@ window.addEventListener(`load`, function(){
         });
     });
 });
+
 //Optimize below
 window.addEventListener('load', function() {
     var goodsPanels = document.querySelectorAll('.goods-panel');
@@ -20,9 +21,31 @@ window.addEventListener('load', function() {
         });
     });
 });
-window.addEventListener('load', editQuantity());
 
+// product name editing
+window.addEventListener('click', function(e) {
+    if (e.target.classList.contains('left')) {
+        var inputField = document.createElement('input');
+        inputField.type = 'text';
+        inputField.value = e.target.textContent;
+        inputField.classList.add('left'); // add 'left' class to the input
+
+        inputField.addEventListener('blur', function() { 
+            var spanElement = document.createElement('span');
+            spanElement.textContent = inputField.value;
+            spanElement.classList.add('left'); 
+            inputField.parentNode.replaceChild(spanElement, inputField);
+        });
+
+        e.target.parentNode.replaceChild(inputField, e.target);
+        inputField.focus();
+    }
+});
+
+
+window.addEventListener('load', editQuantity());
 function addGood() {
+
     var addButton = document.getElementById('add_button');
     var searchBar = document.getElementById('search_bar');
     var goodsContainer = document.querySelector('.goods');
@@ -55,6 +78,7 @@ function addGood() {
 }
 
 function togglePurchase(goodsPanel) {
+
     var status = goodsPanel.querySelector('.status');
     var centerDiv = goodsPanel.querySelector('.center');
     var cancelButton = goodsPanel.querySelector('.cancel');
@@ -79,14 +103,13 @@ function togglePurchase(goodsPanel) {
 function editQuantity(){
 
     var goodsContainer = document.querySelector('.goods');
-
     goodsContainer.addEventListener('click', function(e) {
         if (e.target && e.target.matches('.plus')) {
             var goodsPanel = e.target.closest('.goods-panel');
             var counterSpan = goodsPanel.querySelector('.counter');
             var count = parseInt(counterSpan.textContent, 10);
             counterSpan.textContent = count + 1;
-    
+            
             var minusButton = goodsPanel.querySelector('.minus');
             if (count + 1 > 1) {
                 minusButton.style.display = `inline-block`;
@@ -108,6 +131,10 @@ function editQuantity(){
         }
     });    
 }
+
+
+
+
 
 function createGoodsPanel() {
     var goodsPanel = document.createElement('section');
