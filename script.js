@@ -1,13 +1,5 @@
 window.addEventListener('load', addGood);
-window.addEventListener('load', function() {
-    var goodsPanels = document.querySelectorAll('.goods-panel');
-    goodsPanels.forEach(function(goodsPanel) {
-        var boughtButton = goodsPanel.querySelector('.bought');
-        boughtButton.addEventListener('click', function() {
-            togglePurchase(goodsPanel);
-        });
-    });
-});
+
 window.addEventListener(`load`, function(){
     var goodsPanels = document.querySelectorAll('.goods-panel');
     goodsPanels.forEach(function(goodsPanel) {
@@ -55,39 +47,6 @@ function addGood() {
             searchBar.focus();
         }
     });
-}
-
-function togglePurchaseForExistingGoods() {
-    var existingGoods = document.querySelectorAll('.goods-panel');
-    
-    existingGoods.forEach(function(goodsPanel) {
-        var boughtButton = goodsPanel.querySelector('.bought');
-        boughtButton.addEventListener('click', function() {
-            togglePurchase(goodsPanel);
-        });
-    });
-}
-
-function togglePurchase(goodsPanel) {
-    var statucBar = goodsPanel.querySelector(`.status`);
-    var leftDiv = goodsPanel.querySelector('.left');
-    var centerDiv = goodsPanel.querySelector('.center');
-    var deleteButton = goodsPanel.querySelector('.cancel');
-    var boughtButton = goodsPanel.querySelector('.bought');
-
-    if (boughtButton.textContent == 'Купити товар') {
-        centerDiv.hidden = true;
-        deleteButton.hidden = true;
-        statucBar.textContent = `Куплено`;
-        leftDiv.classList.add('text-line-through');
-        boughtButton.textContent = 'Скасувати покупку';
-    } else {
-        centerDiv.hidden = false;
-        deleteButton.hidden = false;
-        statucBar.textContent = `Не куплено`;
-        leftDiv.classList.remove('text-line-through');
-        boughtButton.textContent = 'Купити товар';
-    }
 }
 
 function createGoodsPanel() {
