@@ -1,5 +1,3 @@
-var isBought = false;
-
 window.addEventListener('load', addGood);
 window.addEventListener(`load`, function(){
     var goodsPanels = document.querySelectorAll('.goods-panel');
@@ -10,7 +8,6 @@ window.addEventListener(`load`, function(){
         });
     });
 });
-
 window.addEventListener('load', function() {
     var goodsPanels = document.querySelectorAll('.goods-panel');
 
@@ -56,25 +53,22 @@ function addGood() {
 }
 
 function togglePurchase(goodsPanel) {
-    
     var status = goodsPanel.querySelector('.status');
     var centerDiv = goodsPanel.querySelector('.center');
     var cancelButton = goodsPanel.querySelector('.cancel');
     var leftSpan = goodsPanel.querySelector('.left');
     var boughtButton = goodsPanel.querySelector('.bought');
 
-    if (isBought==false) {
-        isBought=true;
+    if (boughtButton.textContent === 'Купити товар') {
         status.textContent = 'Куплено'
-        centerDiv.style.visibility = 'hidden';
-        cancelButton.style.visibility = 'hidden';
+        centerDiv.style.display = 'none';
+        cancelButton.style.display = 'none';
         leftSpan.style.textDecoration = 'line-through';
         boughtButton.textContent = 'Скасувати покупку';
     } else {
-        isBought=false;
         status.textContent = 'Не куплено'
-        centerDiv.style.visibility = 'visible';
-        cancelButton.style.visibility = 'visible';
+        centerDiv.style.display = 'flex';
+        cancelButton.style.display = 'inline-block';
         leftSpan.style.textDecoration = 'none';
         boughtButton.textContent = 'Купити товар';
     }
