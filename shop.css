@@ -54,8 +54,14 @@
     border-radius: 14px;
 }
 
+.counter{
+    background-color: lightgrey;
+    padding: 5px;
+    border-radius: 5px;
+}
+
 .minus{
-    visibility: hidden;
+    display: none;
     background-color: red;
     border-color: red;
     color: white;
@@ -83,12 +89,6 @@
 
 .right {
     text-align: right;
-}
-
-.counter{
-    background-color: lightgrey;
-    padding: 5px;
-    border-radius: 5px;
 }
 
 .goods-panel{
