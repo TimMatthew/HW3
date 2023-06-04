@@ -61,14 +61,14 @@ function togglePurchase(goodsPanel) {
 
     if (boughtButton.textContent === 'Купити товар') {
         status.textContent = 'Куплено'
-        centerDiv.style.display = 'none';
-        cancelButton.style.display = 'none';
+        centerDiv.style.visibility = 'hidden';
+        cancelButton.style.visibility = 'hidden';
         leftSpan.style.textDecoration = 'line-through';
         boughtButton.textContent = 'Скасувати покупку';
     } else {
         status.textContent = 'Не куплено'
-        centerDiv.style.display = 'flex';
-        cancelButton.style.display = 'inline-block';
+        centerDiv.style.visibility = 'visible';
+        cancelButton.style.visibility = 'visible';
         leftSpan.style.textDecoration = 'none';
         boughtButton.textContent = 'Купити товар';
     }
