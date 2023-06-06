@@ -17,12 +17,14 @@
 
 .rest{
     display:flex;
+    flex-wrap: wrap;
     align-items:center;
 }
 
 .index-text{
     position: relative;
     margin-right: 5px;
+    margin-bottom: 3px;
     text-align: left;
     background-color: lightgray;
     padding: 6px;
