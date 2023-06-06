@@ -105,8 +105,18 @@ function addGood() {
 
     addButton.addEventListener('click', function() {
         var productName = searchBar.value.trim();
+        var goods = document.querySelectorAll('.goods-panel');
+        var isUnique=true;
 
-        if (productName !== '') {
+        goods.forEach(function(good){
+            var goodName = good.querySelector('.left').textContent;
+            if(productName === goodName){
+                window.alert('Такий товар вже існує. Уведіть іншу назву');
+                isUnique = false;
+            }
+        })
+
+        if (productName !== '' && isUnique) {
             var newGoodsPanel = createGoodsPanel();
 
             var leftSpan = newGoodsPanel.querySelector('.left');
