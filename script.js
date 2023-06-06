@@ -24,7 +24,6 @@ window.addEventListener(`load`, function(){
         });
     });
 });
-
 //Optimize below
 window.addEventListener('load', function() {
     var goodsPanels = document.querySelectorAll('.goods-panel');
@@ -36,6 +35,7 @@ window.addEventListener('load', function() {
         });
     });
 });
+window.addEventListener('load', editQuantity());
 
 
 // product name editing
@@ -195,7 +195,6 @@ function editQuantity(){
             var counterSpan = goodsPanel.querySelector('.counter');
             var count = parseInt(counterSpan.textContent, 10);
             counterSpan.textContent = count + 1;
-            
             var minusButton = goodsPanel.querySelector('.minus');
             if (count + 1 > 1) {
                 minusButton.style.display = `inline-block`;
@@ -217,10 +216,6 @@ function editQuantity(){
         }
     });    
 }
-
-
-
-
 
 function createGoodsPanel() {
     var goodsPanel = document.createElement('section');
