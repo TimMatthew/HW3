@@ -3,9 +3,24 @@ window.addEventListener('load', addGood);
 window.addEventListener(`load`, function(){
     var goodsPanels = document.querySelectorAll('.goods-panel');
     goodsPanels.forEach(function(goodsPanel) {
+        
         var removeButton = goodsPanel.querySelector('.cancel');
-        removeButton.addEventListener('click', function() {
-            goodsPanel.remove();
+        removeButton.addEventListener('click', function(e) {
+        goodsPanel.remove();
+
+        if (e.target.classList.contains('cancel')) {
+            var panelToRemove = e.target.closest('.goods-panel');
+            var goodName = panelToRemove.querySelector('.left').textContent;
+    
+            var indexItems = document.querySelectorAll(`.index-text`);
+            indexItems.forEach(function(indexItem){
+                if(indexItem.textContent.includes(goodName)){
+                    indexItem.remove();
+                }
+            });
+            
+            panelToRemove.remove();
+        }
         });
     });
 });
@@ -22,9 +37,13 @@ window.addEventListener('load', function() {
     });
 });
 
+
 // product name editing
 window.addEventListener('click', function(e) {
     if (e.target.classList.contains('left')) {
+
+        var NewSpanName;
+        var oldSpanName = e.target.textContent;
         var inputField = document.createElement('input');
         inputField.type = 'text';
         inputField.value = e.target.textContent;
@@ -33,17 +52,49 @@ window.addEventListener('click', function(e) {
         inputField.addEventListener('blur', function() { 
             var spanElement = document.createElement('span');
             spanElement.textContent = inputField.value;
+            NewSpanName = inputField.value;
             spanElement.classList.add('left'); 
             inputField.parentNode.replaceChild(spanElement, inputField);
+            
+            var indexTitles = document.querySelectorAll(`.index-text`);
+            indexTitles.forEach(function(indexText){
+                
+                if(indexText.textContent.includes(oldSpanName)){
+                
+                    var indexNum = indexText.querySelector('.index-num');
+                    var indexNumText = indexNum.textContent;
+                    indexText.textContent = NewSpanName;
+                    indexText.style.marginRight = "5px";
+                    indexNum.textContent = indexNumText;
+                    indexText.appendChild(indexNum);
+                }
+            })
         });
 
         e.target.parentNode.replaceChild(inputField, e.target);
+        
         inputField.focus();
     }
 });
 
+// Editing the goodquantity
+window.addEventListener('click', function(e) {
+    if (e.target.classList.contains('plus') || e.target.classList.contains('minus')) {
+        var goodName = e.target.parentNode.parentNode.querySelector('.left').textContent;
+        var goodCounter = e.target.parentNode.querySelector('.counter').textContent;
+
+        var indexTitles = document.querySelectorAll('.index-text');
+        indexTitles.forEach(function(indexTitle){
+            if(indexTitle.textContent.includes(goodName)){
+                var indexNum = indexTitle.querySelector('.index-num');
+                indexNum.textContent = goodCounter;
+            }
+        });
+    }
+});
 
 window.addEventListener('load', editQuantity());
+
 function addGood() {
 
     var addButton = document.getElementById('add_button');
@@ -65,14 +116,49 @@ function addGood() {
             });
 
             var removeButton = newGoodsPanel.querySelector('.cancel');
-                removeButton.addEventListener('click', function() {
+                removeButton.addEventListener('click', function(e) {
                 newGoodsPanel.remove();
+                
+                if (e.target.classList.contains('cancel')) {
+                    var panelToRemove = e.target.closest('.goods-panel');
+                    var goodName = panelToRemove.querySelector('.left').textContent;
+            
+                    var indexItems = document.querySelectorAll(`.index-text`);
+                    indexItems.forEach(function(indexItem){
+                        if(indexItem.textContent.includes(goodName)){
+                            indexItem.remove();
+                        }
+                    });
+                    
+                    panelToRemove.remove();
+                }
             });
 
             goodsContainer.appendChild(newGoodsPanel);
-
             searchBar.value = '';
             searchBar.focus();
+
+            // Add to the 'rest' section
+    var rest = document.querySelector('.rest');
+    var indexText = document.createElement('span');
+    indexText.classList.add('index-text');
+    indexText.textContent = productName;
+    indexText.style.marginRight = "5px";
+    indexText.style.textAlign = "left";
+    indexText.style.backgroundColor = "lightgray";
+    indexText.style.padding = "6px";
+    indexText.style.borderRadius = "10px";
+
+    var indexNum = document.createElement('span');
+    indexNum.classList.add('index-num');
+    indexNum.textContent = '1';
+    indexNum.style.backgroundColor = "orange";
+    indexNum.style.color = "white";
+    indexNum.style.padding = "3px";
+    indexNum.style.borderRadius = "11px";
+
+    indexText.appendChild(indexNum);
+    rest.appendChild(indexText);
         }
     });
 }
