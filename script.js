@@ -2,6 +2,7 @@ window.addEventListener('load', addGood);
 // Optimize below
 window.addEventListener(`load`, function(){
     var goodsPanels = document.querySelectorAll('.goods-panel');
+   
     goodsPanels.forEach(function(goodsPanel) {
         
         var removeButton = goodsPanel.querySelector('.cancel');
@@ -13,7 +14,7 @@ window.addEventListener(`load`, function(){
             var goodName = panelToRemove.querySelector('.left').textContent;
     
             var indexItems = document.querySelectorAll(`.index-text`);
-            indexItems.forEach(function(indexItem){
+                indexItems.forEach(function(indexItem){
                 if(indexItem.textContent.includes(goodName)){
                     indexItem.remove();
                 }
@@ -24,6 +25,7 @@ window.addEventListener(`load`, function(){
         });
     });
 });
+
 //Optimize below
 window.addEventListener('load', function() {
     var goodsPanels = document.querySelectorAll('.goods-panel');
@@ -170,19 +172,44 @@ function togglePurchase(goodsPanel) {
     var cancelButton = goodsPanel.querySelector('.cancel');
     var leftSpan = goodsPanel.querySelector('.left');
     var boughtButton = goodsPanel.querySelector('.bought');
-
+    var goodsName = goodsPanel.querySelector('.left').textContent;
+    var indexItems = document.querySelectorAll('.index-text');
+    
     if (boughtButton.textContent === 'Купити товар') {
         status.textContent = 'Куплено'
         centerDiv.style.visibility = 'hidden';
         cancelButton.style.visibility = 'hidden';
         leftSpan.style.textDecoration = 'line-through';
         boughtButton.textContent = 'Скасувати покупку';
-    } else {
+
+        
+        
+        indexItems.forEach(function(indexItem){
+            if(indexItem.textContent.includes(goodsName)){
+                var replacedItem = indexItem;
+                indexItem.remove();
+                var replaceSection;
+                replaceSection = document.querySelector('.taken');
+                replaceSection.appendChild(replacedItem);
+            }
+        });
+    } 
+    else {
         status.textContent = 'Не куплено'
         centerDiv.style.visibility = 'visible';
         cancelButton.style.visibility = 'visible';
         leftSpan.style.textDecoration = 'none';
         boughtButton.textContent = 'Купити товар';
+
+        indexItems.forEach(function(indexItem){
+            if(indexItem.textContent.includes(goodsName)){
+                var replacedItem = indexItem;
+                indexItem.remove();
+                var replaceSection;
+                replaceSection = document.querySelector('.rest');
+                replaceSection.append(replacedItem);
+            }
+        });
     }
 }
 
