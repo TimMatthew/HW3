@@ -1,8 +1,8 @@
-window.addEventListener('load', addGood);
-window.addEventListener(`load`, deleteGood);
+window.addEventListener('click', addGood);
+window.addEventListener(`click`, deleteGood);
 window.addEventListener('load', editQuantity);
 window.addEventListener('click', editGoodName);
-window.addEventListener('click', updateQuantity);
+window.addEventListener('load', updateQuantity);
 
 /*
  (!!!) Поміняти цикли на for..of for..in де тільки можна
@@ -102,24 +102,7 @@ function addGood() {
                 togglePurchase(newGoodsPanel);
             });
 
-            var removeButton = newGoodsPanel.querySelector('.cancel');
-                removeButton.addEventListener('click', function(e) {
-                newGoodsPanel.remove();
-                
-                if (e.target.classList.contains('cancel')) {
-                    var panelToRemove = e.target.closest('.goods-panel');
-                    var goodName = panelToRemove.querySelector('.left').textContent;
-            
-                    var indexItems = document.querySelectorAll(`.index-text`);
-                    indexItems.forEach(function(indexItem){
-                        if(indexItem.textContent.includes(goodName)){
-                            indexItem.remove();
-                        }
-                    });
-                    
-                    panelToRemove.remove();
-                }
-            });
+
 
             goodsContainer.appendChild(newGoodsPanel);
             searchBar.value = '';
@@ -150,50 +133,23 @@ function addGood() {
     });
 }
 
-function deleteGood(){
-    var goodsPanels = document.querySelectorAll('.goods-panel');
-
-    for (const goodsPanel of goodsPanels) {
-        var removeButton = goodsPanel.querySelector('.cancel');
-            removeButton.addEventListener('click', function(e) {
-            goodsPanel.remove();
-            if (e.target.classList.contains('cancel')) {
-                var panelToRemove = e.target.closest('.goods-panel');
-                var goodName = panelToRemove.querySelector('.left').textContent;
-                var indexItems = document.querySelectorAll(`.index-text`);
-                    indexItems.forEach(function(indexItem){
-                    if(indexItem.textContent.includes(goodName)){
-                        indexItem.remove();
-                    }
-                });
-
-            panelToRemove.remove();
-            }
-        });
+function deleteGood(e) {
+    var removeButton = e.target.closest('.cancel');
+    if (removeButton) {
+      var goodsPanel = removeButton.closest('.goods-panel');
+      goodsPanel.remove();
+  
+      var goodName = goodsPanel.querySelector('.left').textContent;
+      var indexItems = document.querySelectorAll('.index-text');
+  
+      indexItems.forEach(function (indexItem) {
+        var itemName = indexItem.firstChild.textContent.trim();
+        if (itemName === goodName) {
+          indexItem.remove();
+        }
+      });
     }
-   
-    // goodsPanels.forEach(function(goodsPanel) {
-        
-    //     var removeButton = goodsPanel.querySelector('.cancel');
-    //     removeButton.addEventListener('click', function(e) {
-    //     goodsPanel.remove();
-
-    //     if (e.target.classList.contains('cancel')) {
-    //         var panelToRemove = e.target.closest('.goods-panel');
-    //         var goodName = panelToRemove.querySelector('.left').textContent;
-    
-    //         var indexItems = document.querySelectorAll(`.index-text`);
-    //             indexItems.forEach(function(indexItem){
-    //             if(indexItem.textContent.includes(goodName)){
-    //                 indexItem.remove();
-    //             }
-    //         });
-            
-    //         panelToRemove.remove();
-    //     }
-    //     });
-    // });
-}
+  }
 
 function togglePurchase(goodsPanel) {
 
@@ -215,7 +171,9 @@ function togglePurchase(goodsPanel) {
         
         
         indexItems.forEach(function(indexItem){
-            if(indexItem.textContent.includes(goodsName)){
+            
+            var itemName = indexItem.firstChild.textContent.trim();
+            if(itemName === goodsName){
                 var replacedItem = indexItem;
                 indexItem.remove();
                 var replaceSection;
