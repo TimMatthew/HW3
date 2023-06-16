@@ -124,7 +124,7 @@ function addGood() {
     var indexNum = document.createElement('span');
     indexNum.classList.add('index-num');
     indexNum.textContent = '1';
-    indexNum.style.backgroundColor = "orange";
+    indexNum.style.backgroundColor = "rgb(227, 106, 0)";
     indexNum.style.color = "white";
     indexNum.style.padding = "3px";
     indexNum.style.borderRadius = "11px";
