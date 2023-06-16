@@ -22,6 +22,7 @@
 
 .rest{
     display:flex;
+    flex-wrap: wrap;
 }
 
 .index-text{
