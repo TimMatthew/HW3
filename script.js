@@ -1,30 +1,7 @@
 window.addEventListener('load', addGood);
-// Optimize below
-window.addEventListener(`load`, function(){
-    var goodsPanels = document.querySelectorAll('.goods-panel');
-   
-    goodsPanels.forEach(function(goodsPanel) {
-        
-        var removeButton = goodsPanel.querySelector('.cancel');
-        removeButton.addEventListener('click', function(e) {
-        goodsPanel.remove();
+window.addEventListener(`load`, deleteGood);
+window.addEventListener('load', editQuantity());
 
-        if (e.target.classList.contains('cancel')) {
-            var panelToRemove = e.target.closest('.goods-panel');
-            var goodName = panelToRemove.querySelector('.left').textContent;
-    
-            var indexItems = document.querySelectorAll(`.index-text`);
-                indexItems.forEach(function(indexItem){
-                if(indexItem.textContent.includes(goodName)){
-                    indexItem.remove();
-                }
-            });
-            
-            panelToRemove.remove();
-        }
-        });
-    });
-});
 
 //Optimize below
 window.addEventListener('load', function() {
@@ -37,7 +14,7 @@ window.addEventListener('load', function() {
         });
     });
 });
-window.addEventListener('load', editQuantity());
+
 
 
 // product name editing
@@ -49,7 +26,7 @@ window.addEventListener('click', function(e) {
         var inputField = document.createElement('input');
         inputField.type = 'text';
         inputField.value = e.target.textContent;
-        inputField.classList.add('left'); // add 'left' class to the input
+        inputField.classList.add('left');
 
         inputField.addEventListener('blur', function() { 
             var spanElement = document.createElement('span');
@@ -95,7 +72,6 @@ window.addEventListener('click', function(e) {
     }
 });
 
-window.addEventListener('load', editQuantity());
 
 function addGood() {
 
@@ -172,6 +148,32 @@ function addGood() {
     indexText.appendChild(indexNum);
     rest.appendChild(indexText);
         }
+    });
+}
+
+function deleteGood(){
+    var goodsPanels = document.querySelectorAll('.goods-panel');
+   
+    goodsPanels.forEach(function(goodsPanel) {
+        
+        var removeButton = goodsPanel.querySelector('.cancel');
+        removeButton.addEventListener('click', function(e) {
+        goodsPanel.remove();
+
+        if (e.target.classList.contains('cancel')) {
+            var panelToRemove = e.target.closest('.goods-panel');
+            var goodName = panelToRemove.querySelector('.left').textContent;
+    
+            var indexItems = document.querySelectorAll(`.index-text`);
+                indexItems.forEach(function(indexItem){
+                if(indexItem.textContent.includes(goodName)){
+                    indexItem.remove();
+                }
+            });
+            
+            panelToRemove.remove();
+        }
+        });
     });
 }
 
