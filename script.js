@@ -1,12 +1,17 @@
 window.addEventListener('load', addGood);
 window.addEventListener(`load`, deleteGood);
-window.addEventListener('load', editQuantity());
+window.addEventListener('load', editQuantity);
+window.addEventListener('click', editGoodName);
+window.addEventListener('click', updateQuantity);
 
+/*
+ (!!!) Поміняти цикли на for..of for..in де тільки можна
+*/
 
-//Optimize below
+ //Optimize below
 window.addEventListener('load', function() {
+    
     var goodsPanels = document.querySelectorAll('.goods-panel');
-
     goodsPanels.forEach(function(goodsPanel) {
         var boughtButton = goodsPanel.querySelector('.bought');
         boughtButton.addEventListener('click', function() {
@@ -15,10 +20,7 @@ window.addEventListener('load', function() {
     });
 });
 
-
-
-// product name editing
-window.addEventListener('click', function(e) {
+function editGoodName(e) {
     if (e.target.classList.contains('left')) {
 
         var NewSpanName;
@@ -36,28 +38,26 @@ window.addEventListener('click', function(e) {
             inputField.parentNode.replaceChild(spanElement, inputField);
             
             var indexTitles = document.querySelectorAll(`.index-text`);
-            indexTitles.forEach(function(indexText){
-                
-                if(indexText.textContent.includes(oldSpanName)){
-                
-                    var indexNum = indexText.querySelector('.index-num');
+
+            for(let indexTitle of indexTitles) {
+                if(indexTitle.textContent.includes(oldSpanName)){
+                    var indexNum = indexTitle.querySelector('.index-num');
                     var indexNumText = indexNum.textContent;
-                    indexText.textContent = NewSpanName;
-                    indexText.style.marginRight = "5px";
+                    indexTitle.textContent = NewSpanName;
+                    indexTitle.style.marginRight = "5px";
                     indexNum.textContent = indexNumText;
-                    indexText.appendChild(indexNum);
+                    indexTitle.appendChild(indexNum);
                 }
-            })
+            }
         });
 
         e.target.parentNode.replaceChild(inputField, e.target);
         
         inputField.focus();
     }
-});
+}
 
-// Editing the goodquantity
-window.addEventListener('click', function(e) {
+function updateQuantity(e) {
     if (e.target.classList.contains('plus') || e.target.classList.contains('minus')) {
         var goodName = e.target.parentNode.parentNode.querySelector('.left').textContent;
         var goodCounter = e.target.parentNode.querySelector('.counter').textContent;
@@ -70,8 +70,7 @@ window.addEventListener('click', function(e) {
             }
         });
     }
-});
-
+}
 
 function addGood() {
 
@@ -84,13 +83,13 @@ function addGood() {
         var goods = document.querySelectorAll('.goods-panel');
         var isUnique=true;
 
-        goods.forEach(function(good){
+        for(const good of goods){
             var goodName = good.querySelector('.left').textContent;
             if(productName === goodName){
                 window.alert('Такий товар вже існує. Уведіть іншу назву');
                 isUnique = false;
             }
-        })
+        }
 
         if (productName !== '' && isUnique) {
             var newGoodsPanel = createGoodsPanel();
@@ -153,28 +152,47 @@ function addGood() {
 
 function deleteGood(){
     var goodsPanels = document.querySelectorAll('.goods-panel');
-   
-    goodsPanels.forEach(function(goodsPanel) {
-        
-        var removeButton = goodsPanel.querySelector('.cancel');
-        removeButton.addEventListener('click', function(e) {
-        goodsPanel.remove();
 
-        if (e.target.classList.contains('cancel')) {
-            var panelToRemove = e.target.closest('.goods-panel');
-            var goodName = panelToRemove.querySelector('.left').textContent;
-    
-            var indexItems = document.querySelectorAll(`.index-text`);
-                indexItems.forEach(function(indexItem){
-                if(indexItem.textContent.includes(goodName)){
-                    indexItem.remove();
-                }
-            });
-            
+    for (const goodsPanel of goodsPanels) {
+        var removeButton = goodsPanel.querySelector('.cancel');
+            removeButton.addEventListener('click', function(e) {
+            goodsPanel.remove();
+            if (e.target.classList.contains('cancel')) {
+                var panelToRemove = e.target.closest('.goods-panel');
+                var goodName = panelToRemove.querySelector('.left').textContent;
+                var indexItems = document.querySelectorAll(`.index-text`);
+                    indexItems.forEach(function(indexItem){
+                    if(indexItem.textContent.includes(goodName)){
+                        indexItem.remove();
+                    }
+                });
+
             panelToRemove.remove();
-        }
+            }
         });
-    });
+    }
+   
+    // goodsPanels.forEach(function(goodsPanel) {
+        
+    //     var removeButton = goodsPanel.querySelector('.cancel');
+    //     removeButton.addEventListener('click', function(e) {
+    //     goodsPanel.remove();
+
+    //     if (e.target.classList.contains('cancel')) {
+    //         var panelToRemove = e.target.closest('.goods-panel');
+    //         var goodName = panelToRemove.querySelector('.left').textContent;
+    
+    //         var indexItems = document.querySelectorAll(`.index-text`);
+    //             indexItems.forEach(function(indexItem){
+    //             if(indexItem.textContent.includes(goodName)){
+    //                 indexItem.remove();
+    //             }
+    //         });
+            
+    //         panelToRemove.remove();
+    //     }
+    //     });
+    // });
 }
 
 function togglePurchase(goodsPanel) {
