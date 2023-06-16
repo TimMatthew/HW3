@@ -4,11 +4,6 @@ window.addEventListener('load', editQuantity);
 window.addEventListener('click', editGoodName);
 window.addEventListener('load', updateQuantity);
 
-/*
- (!!!) Поміняти цикли на for..of for..in де тільки можна
-*/
-
- //Optimize below
 window.addEventListener('load', function() {
     
     var goodsPanels = document.querySelectorAll('.goods-panel');
@@ -110,7 +105,6 @@ function addGood() {
             searchBar.value = '';
             searchBar.focus();
 
-            // Add to the 'rest' section
     var rest = document.querySelector('.rest');
     var indexText = document.createElement('span');
     indexText.classList.add('index-text');
