@@ -1,20 +1,19 @@
 #shop{
-    border-style: solid;
-    border-color: black;
+    background-color: white;
     border-radius: 10px;
-    width: 57%;
+    width: 52%;
     margin-right: 3%;
+    margin-left: 5%;
 }
 
 .goods{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: "Fira Sans", sans-serif;
 }
 
 #search_bar,#add_button{
-    float:left;
     box-sizing: border-box;
     padding: 5px;
-    
+    color: white;
 }
 
 #search_bar{
@@ -22,10 +21,10 @@
 }
 
 #add_button{
-    color: white;
     print-color-adjust: exact;
     width: 25%;
     border-radius: 5px;
+    font-weight: bold;
     border-color: cornflowerblue;
     box-shadow: 0px 3px darkslateblue;
     background-color:cornflowerblue;
@@ -47,40 +46,28 @@
     text-align: center;
 }
 
-.plus{
-    background-color: green;
-    border-color: green;
-    color: white;
-    border-radius: 14px;
+.plus, .minus{
+    width: 30px;
+    height: 30px;
+    font-size: larger;
+    border-radius: 50%;
+    color: white
 }
 
-.counter{
-    background-color: lightgrey;
-    padding: 5px;
-    border-radius: 5px;
+.plus{
+    background-color: green;
+    border: none;
+    box-shadow: 1px 3px 0px 0px rgb(0, 70, 0); 
 }
 
 .minus{
-    display: none;
     background-color: red;
-    border-color: red;
-    color: white;
-    border-radius: 14px;
+    border: none;
+    box-shadow: 1px 3px 0px 0px rgb(107, 0, 0); 
 }
 
-#template{
-    visibility: hidden;
-}
-
-.text-line-through {
-    text-decoration: line-through;
-}
-
-.status{
-    text-align: center;
-    background-color: lightgray;
-    border-radius: 5px;
-    padding: 3px;
+#tomatoes{
+    text-decoration:line-through;
 }
 
 .left {
@@ -91,19 +78,39 @@
     text-align: right;
 }
 
+.counter{
+    background-color: lightgrey;
+    padding: 5px;
+    border-radius: 5px;
+}
+
 .goods-panel{
     border-top: solid lightgray 2px;
 }
+#cheese-minus-button{
+    background-color:rgb(225, 158, 173);
+    border-color:rgb(225, 158, 173);
+}
 
-.buy-button{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    box-shadow: 0px 3px darkgray;
+.status{
+    width: 85px;
+    height: 35px;
+    white-space: nowrap;
+    font-family: "Fira Sans", sans-serif;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(198, 198, 198);
+    color: white;
+    box-shadow: 1px 3px 6px 1px grey;
 }
 
 .cancel{
+    width:35px;
+    height: 35px;
     background-color: rgb(194, 0, 0);
-    border-color: rgb(194, 0, 0);
     color: rgb(255, 255, 255);
-    border-radius: 5px;   
+    border-radius: 5px;
+    border: none;
+    box-shadow: 1px 3px 6px 1px rgb(104, 19, 19); 
 }
-

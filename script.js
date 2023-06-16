@@ -64,7 +64,9 @@ function updateQuantity(e) {
 
         var indexTitles = document.querySelectorAll('.index-text');
         indexTitles.forEach(function(indexTitle){
-            if(indexTitle.textContent.includes(goodName)){
+
+            var indexName = indexTitle.firstChild.textContent.trim();
+            if(indexName === goodName){
                 var indexNum = indexTitle.querySelector('.index-num');
                 indexNum.textContent = goodCounter;
             }
@@ -201,34 +203,38 @@ function togglePurchase(goodsPanel) {
     }
 }
 
-function editQuantity(){
-
+function editQuantity() {
     var goodsContainer = document.querySelector('.goods');
     goodsContainer.addEventListener('click', function(e) {
+
+        var goodsPanel, counterSpan, count, minusButton;
+
         if (e.target && e.target.matches('.plus')) {
-            var goodsPanel = e.target.closest('.goods-panel');
-            var counterSpan = goodsPanel.querySelector('.counter');
-            var count = parseInt(counterSpan.textContent, 10);
+            goodsPanel = e.target.closest('.goods-panel');
+            counterSpan = goodsPanel.querySelector('.counter');
+            count = parseInt(counterSpan.textContent, 10);
             counterSpan.textContent = count + 1;
-            var minusButton = goodsPanel.querySelector('.minus');
+            minusButton = goodsPanel.querySelector('.minus');
             if (count + 1 > 1) {
                 minusButton.style.display = `inline-block`;
             }
         }
             
         if (e.target && e.target.matches('.minus')) {
-            var goodsPanel = e.target.closest('.goods-panel');
-            var counterSpan = goodsPanel.querySelector('.counter');
-            var count = parseInt(counterSpan.textContent, 10);
+            goodsPanel = e.target.closest('.goods-panel');
+            counterSpan = goodsPanel.querySelector('.counter');
+            count = parseInt(counterSpan.textContent, 10);
             if (count - 1 >= 1) {
                 counterSpan.textContent = count - 1;
             }
     
-            var minusButton = goodsPanel.querySelector('.minus');
+            minusButton = goodsPanel.querySelector('.minus');
             if (count - 1 == 1) {
                 minusButton.style.display = `none`;
             }
         }
+        
+        updateQuantity(e);
     });    
 }
 
