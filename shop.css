@@ -82,9 +82,8 @@
  
 .right {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
-    text-align: right;
-    
 }
 
 .counter{
@@ -105,10 +104,11 @@
     display: grid;
     grid-column-start: 1;
     grid-column-end: 3;
-    width: 85px;
-    height: 35px;
+    width: 7em;
+    height: 1.5em;
     white-space: nowrap;
     font-family: "Fira Sans", sans-serif;
+    text-align: center;
     font-weight: bold;
     border-radius: 5px;
     border: none;
