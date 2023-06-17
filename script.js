@@ -1,4 +1,4 @@
-window.addEventListener('click', addGood);
+window.addEventListener('load', addGood);
 window.addEventListener(`click`, deleteGood);
 window.addEventListener('load', editQuantity);
 window.addEventListener('click', editGoodName);
@@ -29,6 +29,17 @@ function editGoodName(e) {
             var spanElement = document.createElement('span');
             spanElement.textContent = inputField.value;
             NewSpanName = inputField.value;
+            let goods = document.querySelectorAll('.goods-panel');
+
+            for(const good of goods) {
+                var goodName = good.querySelector('.left').textContent;
+                var name = inputField.value.trim();
+                if(name === goodName){
+                    window.alert('Такий товар вже існує. Уведіть іншу назву');
+                    NewSpanName=oldSpanName;
+                }
+            }
+
             if(NewSpanName === ''){
                 window.alert('Нічого не введено. Товару повернуто стару назву');
                 NewSpanName=oldSpanName;
