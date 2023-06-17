@@ -132,7 +132,7 @@ function addGood() {
 
 function deleteGood(e) {
     var removeButton = e.target.closest('.cancel');
-    if (removeButton) {
+
       var goodsPanel = removeButton.closest('.goods-panel');
       goodsPanel.remove();
   
@@ -145,7 +145,6 @@ function deleteGood(e) {
           indexItem.remove();
         }
       });
-    }
   }
 
 function togglePurchase(goodsPanel) {
