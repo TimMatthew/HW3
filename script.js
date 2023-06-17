@@ -50,9 +50,7 @@ function editGoodName(e) {
                 }
             }
         });
-
         e.target.parentNode.replaceChild(inputField, e.target);
-        
         inputField.focus();
     }
 }
@@ -104,32 +102,30 @@ function addGood() {
                 togglePurchase(newGoodsPanel);
             });
 
-
-
             goodsContainer.appendChild(newGoodsPanel);
             searchBar.value = '';
             searchBar.focus();
 
-    var rest = document.querySelector('.rest');
-    var indexText = document.createElement('span');
-    indexText.classList.add('index-text');
-    indexText.textContent = productName;
-    indexText.style.marginRight = "5px";
-    indexText.style.textAlign = "left";
-    indexText.style.backgroundColor = "lightgray";
-    indexText.style.padding = "6px";
-    indexText.style.borderRadius = "10px";
+            var rest = document.querySelector('.rest');
+            var indexText = document.createElement('span');
+            indexText.classList.add('index-text');
+            indexText.textContent = productName;
+            indexText.style.marginRight = "5px";
+            indexText.style.textAlign = "left";
+            indexText.style.backgroundColor = "lightgray";
+            indexText.style.padding = "6px";
+            indexText.style.borderRadius = "10px";
 
-    var indexNum = document.createElement('span');
-    indexNum.classList.add('index-num');
-    indexNum.textContent = '1';
-    indexNum.style.backgroundColor = "rgb(227, 106, 0)";
-    indexNum.style.color = "white";
-    indexNum.style.padding = "3px";
-    indexNum.style.borderRadius = "11px";
+            var indexNum = document.createElement('span');
+            indexNum.classList.add('index-num');
+            indexNum.textContent = '1';
+            indexNum.style.backgroundColor = "rgb(227, 106, 0)";
+            indexNum.style.color = "white";
+            indexNum.style.padding = "3px";
+            indexNum.style.borderRadius = "11px";
 
-    indexText.appendChild(indexNum);
-    rest.appendChild(indexText);
+            indexText.appendChild(indexNum);
+            rest.appendChild(indexText);
         }
     });
 }
@@ -221,16 +217,13 @@ function editQuantity() {
             goodsPanel = e.target.closest('.goods-panel');
             counterSpan = goodsPanel.querySelector('.counter');
             count = parseInt(counterSpan.textContent, 10);
-            if (count - 1 >= 1) {
-                counterSpan.textContent = count - 1;
-            }
-    
+            counterSpan.textContent = count - 1;
+
             minusButton = goodsPanel.querySelector('.minus');
             if (count - 1 == 1) {
                 minusButton.style.display = `none`;
             }
         }
-        
         updateQuantity(e);
     });    
 }
