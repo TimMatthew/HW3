@@ -29,7 +29,12 @@ function editGoodName(e) {
             var spanElement = document.createElement('span');
             spanElement.textContent = inputField.value;
             NewSpanName = inputField.value;
+            if(NewSpanName === ''){
+                window.alert('Нічого не введено. Товару повернуто стару назву');
+                NewSpanName=oldSpanName;
+            }
             spanElement.classList.add('left'); 
+            spanElement.textContent=NewSpanName;
             inputField.parentNode.replaceChild(spanElement, inputField);
             
             var indexTitles = document.querySelectorAll(`.index-text`);
