@@ -3,17 +3,7 @@ window.addEventListener(`click`, deleteGood);
 window.addEventListener('load', editQuantity);
 window.addEventListener('click', editGoodName);
 window.addEventListener('load', updateQuantity);
-
-window.addEventListener('load', function() {
-    
-    var goodsPanels = document.querySelectorAll('.goods-panel');
-    goodsPanels.forEach(function(goodsPanel) {
-        var boughtButton = goodsPanel.querySelector('.bought');
-        boughtButton.addEventListener('click', function() {
-            togglePurchase(goodsPanel);
-        });
-    });
-});
+window.addEventListener('click', togglePurchase);
 
 function editGoodName(e) {
     if (e.target.classList.contains('left')) {
@@ -158,7 +148,9 @@ function deleteGood(e) {
       });
   }
 
-function togglePurchase(goodsPanel) {
+function togglePurchase(e) {
+ var toggleButton = e.target.closest('.bought');
+ var goodsPanel = toggleButton.closest('.goods-panel');
 
     var status = goodsPanel.querySelector('.status');
     var centerDiv = goodsPanel.querySelector('.center');
