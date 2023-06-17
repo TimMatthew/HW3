@@ -214,9 +214,7 @@ function editQuantity() {
             count = parseInt(counterSpan.textContent, 10);
             counterSpan.textContent = count + 1;
             minusButton = goodsPanel.querySelector('.minus');
-            if (count + 1 > 1) {
-                minusButton.style.display = `inline-block`;
-            }
+            minusButton.style.display = `inline-block`;
         }
             
         if (e.target && e.target.matches('.minus')) {
